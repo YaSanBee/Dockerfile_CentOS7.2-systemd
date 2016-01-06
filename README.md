@@ -24,5 +24,6 @@ Currently, systemd in CentOS 7 has been removed and replaced with a fakesystemd 
 
 + docker build --rm -t local/centos7-systemd .
 
-+ docker run --privileged -ti -d -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/centos7-systemd
++ docker run --privileged -d -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/centos7-systemd
 
++ docker exec -ti ***ContainerID*** /bin/bash
