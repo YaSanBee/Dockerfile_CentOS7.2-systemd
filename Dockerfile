@@ -32,4 +32,4 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-ENTRYPOINT ["/usr/sbin/init"]
+CMD ["/usr/sbin/init"]
