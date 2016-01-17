@@ -12,14 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM centos:7.2.1511
+# YaSanBee/Dockerfile_CentOS7.2-systemd
+#
+# VERSION 0.0.8
 
-MAINTAINER YaSanBee
+FROM    centos:7.2.1511
 
-ENV container docker
+MAINTAINER    YaSanBee
 
-RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
-RUN yum -y update; yum clean all; \
+ENV    container docker
+
+RUN    yum -y swap -- remove fakesystemd -- install systemd systemd-libs
+RUN    yum -y update; yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
@@ -30,6 +34,6 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-VOLUME [ "/sys/fs/cgroup" ]
+VOLUME    [ "/sys/fs/cgroup" ]
 
-ENTRYPOINT ["/usr/sbin/init"]
+ENTRYPOINT    ["/usr/sbin/init"]
